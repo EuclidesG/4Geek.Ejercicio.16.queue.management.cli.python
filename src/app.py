@@ -3,16 +3,16 @@ from DataStructures import Queue
 from sms import send
 
 
+
+
+
 # there queue has to be declared globally (outside any other function)
 # that way all methods have access to it
 queue = Queue(mode="FIFO")
 
-print(type(queue.get_queue))
 
 
-print(type(len(queue.get_queue())))
 
-    
 def print_queue():
     # you must print on the console the entire queue list
     print("Printing the entire list...")
@@ -31,7 +31,7 @@ def add():
     elif len(queue.get_queue()) < 2:
         print("Eres la primera persona en cola!")
     elif len(queue.get_queue()) > 1:
-        print(f"Existen unas {len(queue.get_queue)} personas en cola!")
+        print(f"Existen unas {len(queue.get_queue())} personas en cola!")
  
 
     print(f"Ahora faltan {queue.size()} personas en espera ")
@@ -42,9 +42,12 @@ def dequeue():
         deletedqueue = queue.dequeue()
         print(f"Se ha sacado a {deletedqueue}")
         print(f"Ahora faltan {queue.size()} personas en espera ")
-    else: print("No existen personas en cola"
 
-    # Falta agregar enviar el mini mensaje
+        send(f"Ahora ya es turno de {queue.get_queue()[0]['name']} ")
+
+    else: print("No existen personas en cola")
+
+    # Falta agregar enviar el mini mensaje, no lo puedo hacer por limitaciones de twilio
 
 def save():
       with open("queue.json", "w") as outfile:
